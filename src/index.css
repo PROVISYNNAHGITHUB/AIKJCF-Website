@@ -1,4 +1,4 @@
-/* ===== RESET & BASE ===== */
+/* ===== GLOBAL STYLES (affect entire site) ===== */
 * {
   margin: 0;
   padding: 0;
@@ -8,20 +8,20 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.6;
-  color: #2c3e50; /* dark gray‑green for text */
-  background-color: #f0e9db; /* light white */
+  color: #2c3e50;
+  background-color: #f0e9db;
 }
 
-/* ===== LAYOUT ===== */
+/* ===== LAYOUT (container used on all pages) ===== */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* ===== NAVIGATION ===== */
+/* ===== NAVIGATION (App.jsx - appears on every page) ===== */
 nav {
-  background-color: #ffffff; /* soft beige */
+  background-color: #ffffff;
   padding: 1rem 0;
   margin-bottom: 2rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -33,7 +33,7 @@ nav .container {
 }
 
 nav a {
-  color: #2c5f2d; /* dark green */
+  color: #2c5f2d;
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 0;
@@ -41,30 +41,94 @@ nav a {
 }
 
 nav a:hover {
-  color: #4c8b4f; /* lighter green */
+  color: #4c8b4f;
 }
 
-/* ===== HEADINGS ===== */
+/* Navigation layout for logo and brand */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+  margin-right: 1rem;
+}
+
+/* ===== DROPDOWN MENU (used in navigation) ===== */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  background: none;
+  border: none;
+  color: #2c5f2d;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.dropdown-btn:hover {
+  color: #4c8b4f;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f5f0e6;
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  z-index: 10;
+  border: 1px solid #e0d6c8;
+}
+
+.dropdown-content a {
+  color: #2c5f2d;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: normal;
+}
+
+.dropdown-content a:hover {
+  background-color: #fcfcfc;
+  color: #1e3f20;
+}
+
+/* ===== HEADINGS (used across all pages) ===== */
 h1 {
   margin-bottom: 1.5rem;
-  color: #2c5f2d; /* dark green */
-  border-bottom: 2px solid #d4b996; /* beige */
+  color: #2c5f2d;
+  border-bottom: 2px solid #d4b996;
   padding-bottom: 0.5rem;
 }
 
 h2 {
   margin: 1rem 0;
-  color: #3d6b3f; /* medium green */
+  color: #3d6b3f;
 }
 
-/* ===== HOMEPAGE LATEST POST ===== */
+/* ===== HOMEPAGE (Home.jsx) ===== */
 .latest-post {
   background: rgb(239, 230, 213);
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   margin-bottom: 2rem;
-  border: 1px solid #f0e0d0; /* light beige border */
+  border: 1px solid #f0e0d0;
 }
 
 .latest-post img,
@@ -76,15 +140,13 @@ h2 {
   border-radius: 4px;
 }
 
-
-
 .latest-post .text-content {
   font-size: 1.2rem;
-  background: #c7bcab; /* very light beige */
+  background: #c7bcab;
   padding: 1.5rem;
   border-radius: 4px;
   margin: 1rem 0;
-  border-left: 4px solid #4c8b4f; /* green accent */
+  border-left: 4px solid #4c8b4f;
 }
 
 .post-meta {
@@ -93,7 +155,7 @@ h2 {
   margin-top: 1rem;
 }
 
-/* ===== ARCHIVE GRID ===== */
+/* ===== ARCHIVE PAGE (Archive.jsx) ===== */
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -113,12 +175,12 @@ h2 {
 .post-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border-color: #4c8b4f; /* green border on hover */
+  border-color: #4c8b4f;
 }
 
 .post-card .media iframe {
   width: 100%;
-  height: 180px; /* match the image height */
+  height: 180px;
   object-fit: cover;
 }
 
@@ -162,7 +224,7 @@ h2 {
   margin-top: 0.5rem;
 }
 
-/* ===== FORMS ===== */
+/* ===== FORMS (used on Admin.jsx and Login.jsx) ===== */
 form {
   background: white;
   padding: 2rem;
@@ -181,7 +243,7 @@ label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: #2c5f2d; /* dark green */
+  color: #2c5f2d;
 }
 
 input,
@@ -189,11 +251,11 @@ select,
 textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #e0d6c8; /* beige‑ish border */
+  border: 1px solid #e0d6c8;
   border-radius: 4px;
   font-family: inherit;
   font-size: 1rem;
-  background-color: #fffaf5; /* very light beige background */
+  background-color: #fffaf5;
   transition: border-color 0.3s;
 }
 
@@ -201,7 +263,7 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #4c8b4f; /* green focus */
+  border-color: #4c8b4f;
 }
 
 textarea {
@@ -210,7 +272,7 @@ textarea {
 }
 
 button {
-  background-color: #4c8b4f; /* medium green */
+  background-color: #4c8b4f;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -222,16 +284,16 @@ button {
 }
 
 button:hover {
-  background-color: #2c5f2d; /* darker green */
+  background-color: #2c5f2d;
 }
 
 button:disabled {
-  background-color: #a8c6a9; /* muted green */
+  background-color: #a8c6a9;
   cursor: not-allowed;
 }
 
 .error-message {
-  color: #c44536; /* warm red for errors (but still in palette) */
+  color: #c44536;
   margin-top: 1rem;
   padding: 0.75rem;
   background-color: #ffebe6;
@@ -248,7 +310,7 @@ button:disabled {
   border-left: 4px solid #2c5f2d;
 }
 
-/* ===== ADMIN PANEL SPECIFIC ===== */
+/* ===== ADMIN PAGE SPECIFIC (Admin.jsx) ===== */
 .admin-header {
   display: flex;
   justify-content: space-between;
@@ -257,17 +319,17 @@ button:disabled {
 }
 
 .logout-btn {
-  background-color: #d4b996; /* beige */
-  color: #2c5f2d;
+  background-color: #932525;
+  color: #ffffff;
   font-weight: normal;
 }
 
 .logout-btn:hover {
-  background-color: #c4a886; /* darker beige */
+  background-color: #c4a886;
   color: #1e3f20;
 }
 
-/* ===== LOADING INDICATOR ===== */
+/* ===== LOADING INDICATOR (appears on various pages) ===== */
 .loading {
   text-align: center;
   padding: 2rem;
@@ -275,88 +337,13 @@ button:disabled {
   color: #7f8c8d;
 }
 
-/* ===== RESPONSIVE TWEAKS ===== */
+/* ===== RESPONSIVE DESIGN (applies to all pages) ===== */
 @media (max-width: 768px) {
   nav .container {
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .posts-grid {
-    grid-template-columns: 1fr;
-  }
-
-  form {
-    padding: 1.5rem;
-  }
-}
-
-/* ===== DROPDOWN MENU ===== */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-btn {
-  background: none;
-  border: none;
-  color: #2c5f2d;
-  font-weight: 500;
-  font-size: 1rem;
-  padding: 0.5rem 0;
-  cursor: pointer;
-}
-
-.dropdown-btn:hover {
-  color: #4c8b4f;
-}
-
-.dropdown-content {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #f5f0e6; /* beige */
-  min-width: 160px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 4px;
-  z-index: 10;
-  border: 1px solid #e0d6c8;
-}
-
-.dropdown-content a {
-  color: #2c5f2d;
-  padding: 10px 16px;
-  text-decoration: none;
-  display: block;
-  font-weight: normal;
-}
-
-.dropdown-content a:hover {
-  background-color: #fcfcfc;
-  color: #1e3f20;
-}
-
-/* Navigation layout */
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.logo-link {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  height: 100px;      /* adjust as needed */
-  width: auto;       /* maintain aspect ratio */
-  margin-right: 1rem;
-}
-
-/* For smaller screens, stack the nav links below the logo */
-@media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
     align-items: flex-start;
@@ -372,4 +359,26 @@ button:disabled {
     gap: 0.5rem;
     width: 100%;
   }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  form {
+    padding: 1.5rem;
+  }
+}
+
+/* ===== FOOTER (Footer.jsx - appears on every page) ===== */
+.footer {
+  background-color: #fafafa;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  text-align: center;
+  border-top: 2px solid #d4b996;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+  color: #2c5f2d;
 }

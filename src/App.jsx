@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import Archive from './pages/Archive'
 import Admin from './pages/Admin'
 import Login from './pages/Login'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -23,7 +24,10 @@ function App() {
         <Route path="/archive" element={<Archive />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/login" element={<Login />} />
-      </Routes>
+      </Routes> 
+      <footer>
+        <Footer />
+      </footer>
     </BrowserRouter>
   )
 }
