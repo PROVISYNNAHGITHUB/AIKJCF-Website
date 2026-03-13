@@ -11,7 +11,7 @@ function App() {
       <nav>
         <div className="container">
           <Link to="/" className="logo-link">
-        <img src="/assets/kjcf-Logo.jpeg" alt="AIKJCF" className="logo" />
+        <img src="/assets/kjcf-Logo.png" alt="AIKJCF" className="logo" />
         <h1 className="org-name">All India Khasi Jaintia Christian Fellowship</h1>
           </Link>
           <Link to="/">Home</Link>
