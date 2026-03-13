@@ -103,10 +103,6 @@ export default function Admin() {
       </div>
       <p>Welcome, {user?.email}</p>
 
-      <button className="logout-btn" onClick={() => supabase.auth.signOut()}>
-        Logout
-      </button>
-
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Type:</label>
