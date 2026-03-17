@@ -4,8 +4,7 @@ export default function Footer() {
       <div className="container">
         <p>&copy; {new Date().getFullYear()} All India Khasi Jaintia Christian Fellowship. All rights reserved.</p>
         <p>Designed with ❤️ for the community.</p>
-        <p>Co-Ordinator</p>
-        <p>Providential Synnah</p>
+        <p>Co-Ordinator - Providential Synnah</p>
         <p>Member KJCF New Delhi</p>
       </div>
     </footer>
