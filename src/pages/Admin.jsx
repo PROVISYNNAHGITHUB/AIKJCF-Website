@@ -6,6 +6,7 @@ export default function Admin() {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [posts, setPosts] = useState([])
+  const [selectedPostId, setSelectedPostId] = useState('')
   const [type, setType] = useState('text')
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
@@ -86,7 +87,7 @@ export default function Admin() {
       setContent('')
       setFile(null)
       alert('Post created!')
-      fetchPosts() // refresh the list
+      fetchPosts() // refresh the dropdown
     } catch (error) {
       alert(error.message)
     } finally {
@@ -94,18 +95,20 @@ export default function Admin() {
     }
   }
 
-  const handleDelete = async (post) => {
-    if (!window.confirm(`Are you sure you want to delete "${post.title || 'Untitled'}"?`)) return
+  const handleDelete = async () => {
+    if (!selectedPostId) {
+      alert('Please select a post to delete.')
+      return
+    }
+    const post = posts.find(p => p.id === selectedPostId)
+    if (!window.confirm(`Are you sure you want to delete "${post?.title || 'Untitled'}"?`)) return
     setDeleting(true)
 
     try {
       // If post has a file, delete it from storage
-      if (post.file_url) {
-        // Extract file path from URL – depends on your storage structure
-        // Example: https://project.supabase.co/storage/v1/object/public/media/filename.jpg
+      if (post?.file_url) {
         const urlParts = post.file_url.split('/')
-      const fileName = urlParts[urlParts.length - 1] // gets the filename
-        // Alternative: if you stored the path separately, you'd use that. Here we assume filename is at the end.
+        const fileName = urlParts[urlParts.length - 1]
         if (fileName) {
           const { error: storageError } = await supabase.storage
             .from('media')
@@ -114,16 +117,16 @@ export default function Admin() {
         }
       }
 
-      // Delete the post from database
       const { error } = await supabase
         .from('posts')
         .delete()
-        .eq('id', post.id)
+        .eq('id', selectedPostId)
 
       if (error) throw error
 
       alert('Post deleted')
-      fetchPosts() // refresh list
+      setSelectedPostId('')
+      fetchPosts() // refresh dropdown
     } catch (error) {
       alert('Error deleting post: ' + error.message)
     } finally {
@@ -189,28 +192,31 @@ export default function Admin() {
         </button>
       </form>
 
-      <h2 style={{ marginTop: '3rem' }}>Existing Posts</h2>
-      {posts.length === 0 ? (
-        <p>No posts yet.</p>
-      ) : (
-        <div className="admin-posts-list">
-          {posts.map((post) => (
-            <div key={post.id} className="admin-post-item">
-              <div className="admin-post-info">
-                <strong>{post.title || 'Untitled'}</strong> ({post.type}) – {new Date(post.created_at).toLocaleDateString()}
-                {post.type === 'text' && <p style={{ margin: '0.25rem 0', color: '#555' }}>{post.content.substring(0, 100)}...</p>}
-              </div>
-              <button
-                onClick={() => handleDelete(post)}
-                disabled={deleting}
-                className="delete-btn"
-              >
-                Delete
-              </button>
-            </div>
-          ))}
+      <h2 style={{ marginTop: '3rem' }}>Delete a Post</h2>
+      <div className="delete-section">
+        <div className="form-group">
+          <label>Select post to delete:</label>
+          <select
+            value={selectedPostId}
+            onChange={(e) => setSelectedPostId(e.target.value)}
+            className="post-select"
+          >
+            <option value="">-- Choose a post --</option>
+            {posts.map((post) => (
+              <option key={post.id} value={post.id}>
+                {post.title || 'Untitled'} ({post.type}) – {new Date(post.created_at).toLocaleDateString()}
+              </option>
+            ))}
+          </select>
         </div>
-      )}
+        <button
+          onClick={handleDelete}
+          disabled={deleting || !selectedPostId}
+          className="delete-btn"
+        >
+          {deleting ? 'Deleting...' : 'Delete Selected Post'}
+        </button>
+      </div>
     </div>
   )
 }
