@@ -12,17 +12,13 @@
           <div className="container">
             <Link to="/" className="logo-link">
           <img src="/assets/kjcf-Logo.png" alt="AIKJCF" className="logo" />
-          <h1 className="org-name">All India Khasi Jaintia Christian Fellowship</h1>
+          <h1 className="org-name">All India Khasi Jaiñtia Christian Fellowship</h1>
             </Link>
             <Link to="/">Home</Link>
             <Link to="/archive">Archive</Link>
             <Link to="/admin">Admin</Link>
           </div>
         </nav>
-        <div className='overview-section'>
-        <h1>Overview</h1>
-        <p id='overview'>The All India Khasi Jaintia Fellowship (AIKJCF)</p>
-        </div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/archive" element={<Archive />} />
