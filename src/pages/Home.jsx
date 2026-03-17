@@ -34,7 +34,7 @@ export default function Home() {
     <div className="container">
         <div className='overview-section'>
           <h1>Overview</h1>
-          <p id='overview'>Naklier: Nakliar u lum Makashang yn lah ban iohi ia ka Ri India.</p>
+          <p id='overview'>Nakliar: Nakliar u lum Makashang yn lah ban iohi ia ka Ri India.</p>
           <p>Ki lum ba jyrngam ka thaiñ shatei lam Mihngi, ka ri shyiap baïar ka thaiñ Sepngi, ki shnong ba itynnad ha ki thaiñ Shathie ha syndah ka Thwei ba ïar ka Duriaw Bah India, ki lum thah ha trai u Lum Makashang ha ki thaiñ Shatei ka Ri India.</p>
           <p>Hapdeng ka jylli sawdong sawkun kumne U TRAI Uba u Blei U la pynkha ia ka All India Khasi Jaiñtia Christian Fellowship. Ka kynhun Ki Jingiaseng ki khun Khristan kiba sah, kiba trei, kiba pule,kiba leit phah sumar ha kylleng ki bynta ka Ri India. Ki Khasi Jaiñtia Christian Fellowship bapher bapher, ki Khasi Christian Fellowship bapher bapher, ka Meghalaya Christian Fellowship bad kiwei ki kynhun Khristan kiba pdiang bad kyrshan ia ka AIKJCF ka rynsan jong baroh ki Khun Khristan, ngi buh haka ktien phareng kumne(The Non-Denominational Entity)</p>
         </div>
