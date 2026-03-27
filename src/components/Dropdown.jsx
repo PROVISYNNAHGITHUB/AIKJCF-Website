@@ -5,7 +5,7 @@ export default function Dropdown({ label, items }) {
 
   return (
     <div className="dropdown" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
-      <button className="dropdown-btn">{label} ▼</button>
+      <button className="dropdown-btn">{label}☰</button>
       {isOpen && (
         <div className="dropdown-content">
           {items.map((item, index) => (
