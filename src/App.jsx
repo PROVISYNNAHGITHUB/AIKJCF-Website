@@ -12,6 +12,7 @@
   import Gallery from './pages/Gallery'
   import Announcement from './pages/Announcement'
   import Archive from './pages/Archive'
+  import NaRynsan from './pages/NaRynsan'
 
 
   function App() {
@@ -34,6 +35,7 @@
                           { text: 'Devotions', link: '/devotions' },
                           { text: 'Testimony', link: '/testimony' },  
                           { text: 'Gallery', link: '/gallery' },
+                          { text: 'NaRynsan', link: '/narynsan' },
                           { text: 'Admin', link: '/admin'},
                           { text: 'Announcement', link: '/announcement' },
                         ]}
@@ -55,6 +57,7 @@
           <Route path="/Devotions" element={<Devotions />} />
           <Route path="/Testimony" element={<Testimony />} />
           <Route path="/Gallery" element={<Gallery />} />
+          <Route path="/NaRynsan" element={<NaRynsan />} />
           <Route path="/Announcement" element={<Announcement />} />
         </Routes> 
         <footer>
