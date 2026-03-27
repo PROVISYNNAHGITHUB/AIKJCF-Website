@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-// Define your members data here
 const membersData = {
-    "2025-2026": [
+  "2025-2026": [
     { name: "Name", department: "Secretary", picture: "" },
+    { name: "Name", department: "Treasurer", picture: "" },
     { name: "Name", department: "Media Team", picture: "" }
   ],
   "2024-2025": [
@@ -26,14 +26,25 @@ const membersData = {
     { name: "Name", department: "Secretary", picture: "" },
     { name: "Name", department: "Media Team", picture: "" }
   ]
-  // Add more years as needed
 }
 
 export default function About() {
-  const [selectedYear, setSelectedYear] = useState("2026")
-  const years = Object.keys(membersData).sort((a,b) => b - a)
+  const [selectedYear, setSelectedYear] = useState("2025-2026")
+  // Sort years by the starting year (first 4 characters) descending
+  const years = Object.keys(membersData).sort((a, b) => {
+    const startA = parseInt(a.split('-')[0])
+    const startB = parseInt(b.split('-')[0])
+    return startB - startA
+  })
 
   const members = membersData[selectedYear] || []
+
+  // Group members by department
+  const departments = {}
+  members.forEach(member => {
+    if (!departments[member.department]) departments[member.department] = []
+    departments[member.department].push(member)
+  })
 
   return (
     <div className="container">
@@ -41,18 +52,27 @@ export default function About() {
       <div className="year-selector">
         <label>Select Year: </label>
         <select value={selectedYear} onChange={e => setSelectedYear(e.target.value)}>
-          {years.map(year => <option key={year} value={year}>{year}</option>)}
+          {years.map(year => (
+            <option key={year} value={year}>{year}</option>
+          ))}
         </select>
       </div>
-      <div className="members-grid">
-        {members.map((member, idx) => (
-          <div key={idx} className="member-card">
-            {member.picture && <img src={member.picture} alt={member.name} />}
-            <h3>{member.name}</h3>
-            <p>{member.department}</p>
+
+      {Object.entries(departments).map(([dept, deptMembers]) => (
+        <div key={dept} className="department-section">
+          <h2>{dept}</h2>
+          <div className="members-grid">
+            {deptMembers.map((member, idx) => (
+              <div key={idx} className="member-card">
+                {member.picture && <img src={member.picture} alt={member.name} />}
+                <h3>{member.name}</h3>
+                {/* Department is already shown as section heading, so we can omit it here, or keep it */}
+                {member.department !== dept && <p>{member.department}</p>}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   )
 }
